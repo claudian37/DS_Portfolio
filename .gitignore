@@ -1,0 +1,9 @@
+*.pyc
+*.ipynb
+
+# DS generated files
+.DS_Store
+.DS_Store?
+
+# Credials
+*credentials.py
