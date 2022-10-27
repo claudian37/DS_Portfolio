@@ -9,9 +9,9 @@ class Tree:
 	def children(self):
 		return self.left, self.right
 
-class HuffmanCodeTree:
+class HuffmanCodingTree:
 	"""
-	Class to build a Huffman code tree.
+	Class to build a Huffman coding tree.
 
 	Parameters:
 	chars (str): Input text. 
@@ -24,7 +24,7 @@ class HuffmanCodeTree:
 
 	def get_huffman_code(self):
 		tree = self._build_tree()
-		encoding = self._build_huffman_code_tree(node=tree)
+		encoding = self._assign_huffman_coding(node=tree)
 		return encoding
 
 	def _build_tree(self):
@@ -49,22 +49,21 @@ class HuffmanCodeTree:
 
 		return Q[0][0]
 
-	def _build_huffman_code_tree(self, node, encoding=''):
+	def _assign_huffman_coding(self, node, encoding=''):
 		# Case when node is a single node
 		if type(node) == str:
 			return {node: encoding}
 		huffman_dict = {}
 		(node_l, node_r) = node.children()
 		# Recursively build left branch 
-		huffman_dict.update(self._build_huffman_code_tree(node=node_l, encoding=encoding + '0'))
+		huffman_dict.update(self._assign_huffman_coding(node=node_l, encoding=encoding + '0'))
 		# Recursively build right branch 
-		huffman_dict.update(self._build_huffman_code_tree(node=node_r, encoding=encoding + '1'))
+		huffman_dict.update(self._assign_huffman_coding(node=node_r, encoding=encoding + '1'))
 		return huffman_dict
- 
+
 if __name__ == '__main__':
 	chars = 'minimum'
 	huffman = HuffmanCodeTree(chars)
 	encoding = huffman.get_huffman_code()
 	for e in encoding:
 		print(e, ' : ', encoding[e])
-
