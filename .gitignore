@@ -1,5 +1,4 @@
 *.pyc
-*.ipynb
 
 # DS generated files
 .DS_Store
